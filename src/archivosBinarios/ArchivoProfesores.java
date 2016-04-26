@@ -63,7 +63,7 @@ public class ArchivoProfesores {
 //        File f = new File("Datos.dat");
         Profesor p;
         try (ObjectInputStream entrada = new ObjectInputStream(
-                new FileInputStream("objetos.dat"));
+                new FileInputStream(archivo.toFile()));
                 ObjectOutputStream salida = new ObjectOutputStream(
                         new FileOutputStream("ProfesoresSabios.dat"))) {
             while (true) {

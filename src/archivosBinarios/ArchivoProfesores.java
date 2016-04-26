@@ -59,7 +59,6 @@ public class ArchivoProfesores {
 
     public List<Profesor> clasificarProfesores(int edad) {
         List<Profesor> listaSabios = new ArrayList();
-        boolean resultado = false;
 //        File f = new File("Datos.dat");
         Profesor p;
         try (ObjectInputStream entrada = new ObjectInputStream(
@@ -87,7 +86,7 @@ public class ArchivoProfesores {
 //                resultado = true;
 //            }
 //        } catch (IOException ex) {
-////            System.out.println("Error al abrir el fichero" + ex.getMessage());
+//            System.out.println("Error al abrir el fichero" + ex.getMessage());
 //        }
         return listaSabios;
     }

@@ -48,7 +48,7 @@ public class Profesor implements Serializable{
 
     @Override
     public String toString() {
-        return "Nombre: "+this.nombre+"\tcon DNI: "+this.nif+"\tdepartamento: "+this.depart+"\tcon Edad: "+this.edad+"\n"; 
+        return "Nombre: "+this.nombre+"\tcon DNI: "+this.nif+"\tDepartamento: "+this.depart+"\tcon Edad: "+this.edad+"\n"; 
     }
     
     

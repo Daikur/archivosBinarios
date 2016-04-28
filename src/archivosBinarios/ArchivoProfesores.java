@@ -1,5 +1,6 @@
 package archivosBinarios;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,10 +22,10 @@ public class ArchivoProfesores {
         }
     }
 
-    public boolean guardarProfesores(List<Profesor> lista) {
+    public boolean guardarProfesores(List<Profesor> lista, File archivo) {
         boolean resultado = false;
 //        File f = new File("Datos.dat");
-        try (FileOutputStream fileOutput = new FileOutputStream(archivo.toFile(), true);
+        try (FileOutputStream fileOutput = new FileOutputStream(archivo, false);
                 ObjectOutputStream datos = new ObjectOutputStream(fileOutput)) {
             for (Profesor listProfesores : lista) {
                 datos.writeObject(listProfesores);

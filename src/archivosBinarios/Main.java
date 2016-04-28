@@ -22,7 +22,7 @@ public class Main {
         Path archivo = Paths.get("Datos.dat");
         ArchivoProfesores ap = new ArchivoProfesores(archivo);
 
-        System.out.println(ap.guardarProfesores(lista));
+//        System.out.println(ap.guardarProfesores(lista));
         System.out.println(ap.mostrarProfesores("Informatica"));
         System.out.println(ap.clasificarProfesores(30));
 

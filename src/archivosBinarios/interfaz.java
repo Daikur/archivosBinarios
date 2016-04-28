@@ -1,9 +1,11 @@
 package archivosBinarios;
 
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JFileChooser;
 
 public class interfaz extends javax.swing.JFrame {
 
@@ -48,6 +50,7 @@ public class interfaz extends javax.swing.JFrame {
         botonBuscarPE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestión Profesores");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("NIF:");
@@ -118,8 +121,9 @@ public class interfaz extends javax.swing.JFrame {
                         .addGap(78, 78, 78)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addComponent(botonAñadirProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(543, 543, 543)
+                        .addGap(520, 520, 520)
                         .addComponent(guardarProfesores)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -162,7 +166,6 @@ public class interfaz extends javax.swing.JFrame {
         jLabel6.setText("Escribe el nombre del departamento: ");
 
         campoDepartamento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        campoDepartamento.setText(" ");
 
         campoMostrarProfesores.setColumns(20);
         campoMostrarProfesores.setRows(5);
@@ -301,7 +304,7 @@ public class interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_botonAñadirProfesoresActionPerformed
 
     private void botonBuscarPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPDActionPerformed
-        this.campoMostrarProfesores.setText(ap.mostrarProfesores(this.campoMostrarProfesores.getText()).toString());
+        this.campoMostrarProfesores.setText(ap.mostrarProfesores(this.campoDepartamento.getText()).toString() + "\n");
     }//GEN-LAST:event_botonBuscarPDActionPerformed
 
     private void botonBuscarPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPEActionPerformed
@@ -309,7 +312,12 @@ public class interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_botonBuscarPEActionPerformed
 
     private void guardarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProfesoresActionPerformed
-        ap.guardarProfesores(lista);
+        int valor = this.ventanaElegir.showSaveDialog(this.guardarProfesores);
+//        File archivo = this.ventanaElegir.getSelectedFile();
+        if (valor == JFileChooser.APPROVE_OPTION) {
+            File archivo = this.ventanaElegir.getSelectedFile();
+        }
+        ap.guardarProfesores(lista,archivo.toFile());
     }//GEN-LAST:event_guardarProfesoresActionPerformed
 
     public static void main(String args[]) {
@@ -375,4 +383,5 @@ public class interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     // End of variables declaration//GEN-END:variables
     private List<Profesor> lista = new ArrayList();
+    final JFileChooser ventanaElegir = new JFileChooser();
 }

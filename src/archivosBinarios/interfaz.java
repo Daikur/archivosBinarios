@@ -5,6 +5,8 @@
  */
 package archivosBinarios;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,8 @@ import java.util.List;
  * @author orteg
  */
 public class interfaz extends javax.swing.JFrame {
+        Path archivo = Paths.get("Datos.dat");
+        ArchivoProfesores ap = new ArchivoProfesores(archivo);
     /**
      * Creates new form interfaz
      */
@@ -53,9 +57,9 @@ public class interfaz extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        campoEdadListado = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        areaListadoProfesores = new javax.swing.JTextArea();
         botonBuscarPE = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,6 +99,11 @@ public class interfaz extends javax.swing.JFrame {
 
         guardarProfesores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         guardarProfesores.setText("Guardar");
+        guardarProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarProfesoresActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Añadir Profesores");
@@ -104,9 +113,9 @@ public class interfaz extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,8 +133,7 @@ public class interfaz extends javax.swing.JFrame {
                         .addGap(78, 78, 78)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(botonAñadirProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botonAñadirProfesores, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(543, 543, 543)
                         .addComponent(guardarProfesores)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -177,6 +185,11 @@ public class interfaz extends javax.swing.JFrame {
 
         botonBuscarPD.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botonBuscarPD.setText("Buscar");
+        botonBuscarPD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarPDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -216,14 +229,19 @@ public class interfaz extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Escribe la edad por la que quieres buscar");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        campoEdadListado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        areaListadoProfesores.setColumns(20);
+        areaListadoProfesores.setRows(5);
+        jScrollPane3.setViewportView(areaListadoProfesores);
 
         botonBuscarPE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botonBuscarPE.setText("Buscar");
+        botonBuscarPE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarPEActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -238,7 +256,7 @@ public class interfaz extends javax.swing.JFrame {
                             .addComponent(jLabel9)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(campoEdadListado, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(botonBuscarPE, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -257,7 +275,7 @@ public class interfaz extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(campoEdadListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botonBuscarPE)))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -296,6 +314,18 @@ public class interfaz extends javax.swing.JFrame {
         this.areaProfesores.setText(this.campoNIF.toString());
     }//GEN-LAST:event_botonAñadirProfesoresActionPerformed
 
+    private void botonBuscarPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPDActionPerformed
+        this.campoMostrarProfesores.setText(ap.mostrarProfesores(this.campoMostrarProfesores.toString()).toString());
+    }//GEN-LAST:event_botonBuscarPDActionPerformed
+
+    private void botonBuscarPEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarPEActionPerformed
+        this.areaListadoProfesores.setText(ap.clasificarProfesores(Integer.parseInt(this.campoEdadListado.toString())).toString());
+    }//GEN-LAST:event_botonBuscarPEActionPerformed
+
+    private void guardarProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarProfesoresActionPerformed
+        ap.guardarProfesores(lista);
+    }//GEN-LAST:event_guardarProfesoresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -332,6 +362,7 @@ public class interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea areaListadoProfesores;
     private javax.swing.JTextArea areaProfesores;
     private javax.swing.JButton botonAñadirProfesores;
     private javax.swing.JButton botonBuscarPD;
@@ -339,6 +370,7 @@ public class interfaz extends javax.swing.JFrame {
     private javax.swing.JTextField campoDepart;
     private javax.swing.JTextField campoDepartamento;
     private javax.swing.JTextField campoEdad;
+    private javax.swing.JTextField campoEdadListado;
     private javax.swing.JTextArea campoMostrarProfesores;
     private javax.swing.JTextField campoNIF;
     private javax.swing.JTextField campoName;
@@ -358,8 +390,6 @@ public class interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
     private List<Profesor> lista = new ArrayList();
 }

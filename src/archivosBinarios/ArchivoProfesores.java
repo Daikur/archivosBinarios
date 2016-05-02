@@ -22,10 +22,14 @@ public class ArchivoProfesores {
         }
     }
 
-    public boolean guardarProfesores(List<Profesor> lista, File archivo) {
+    public void setArchivo(Path archivo) {
+        this.archivo = archivo;
+    }
+
+    public boolean guardarProfesores(List<Profesor> lista) {
         boolean resultado = false;
 //        File f = new File("Datos.dat");
-        try (FileOutputStream fileOutput = new FileOutputStream(archivo, false);
+        try (FileOutputStream fileOutput = new FileOutputStream(archivo.toFile(), false);
                 ObjectOutputStream datos = new ObjectOutputStream(fileOutput)) {
             for (Profesor listProfesores : lista) {
                 datos.writeObject(listProfesores);

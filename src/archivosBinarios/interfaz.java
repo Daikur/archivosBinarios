@@ -316,8 +316,10 @@ public class interfaz extends javax.swing.JFrame {
 //        File archivo = this.ventanaElegir.getSelectedFile();
         if (valor == JFileChooser.APPROVE_OPTION) {
             File archivo = this.ventanaElegir.getSelectedFile();
+            ap.setArchivo(archivo.toPath());
+            ap.guardarProfesores(lista);
         }
-        ap.guardarProfesores(lista,archivo.toFile());
+        
     }//GEN-LAST:event_guardarProfesoresActionPerformed
 
     public static void main(String args[]) {
